@@ -47,13 +47,6 @@ class AnnouncementNotifier(TwitterNotifier):
         self.message = msg_config["motd"]
 
 
-
-class GithubNotifier(TwitterNotifier):
-    def generate_message(self):
-        repo = github3.repository("sinar", "blockedornot.sinarproject.org")
-
-
-
 def main():
     announcement = AnnouncementNotifier()
     announcement.notify()

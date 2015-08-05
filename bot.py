@@ -2,6 +2,8 @@ __author__ = 'sweemeng'
 import yaml
 import twitter
 import random
+import github3
+import time
 
 class TwitterNotifier(object):
     def __init__(self):
@@ -39,7 +41,24 @@ class FortuneNotifier(TwitterNotifier):
         self.message = random.choice(messages)
 
 
+class AnnouncementNotifier(TwitterNotifier):
+    def generate_message(self):
+        msg_config = yaml.load(open("statuses.yaml"))
+        self.message = msg_config["motd"]
+
+
+
+class GithubNotifier(TwitterNotifier):
+    def generate_message(self):
+        repo = github3.repository("sinar", "blockedornot.sinarproject.org")
+
+
+
 def main():
+    announcement = AnnouncementNotifier()
+    announcement.notify()
+
+    time.sleep(30)
     notifiers = [
         FortuneNotifier,
     ]

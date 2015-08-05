@@ -7,3 +7,5 @@ status:
 factoids:
   - max
   - min
+
+motd: "Reminder our security workshop is happening detail on https://www.facebook.com/events/799108423536008/"

@@ -1,0 +1,9 @@
+# Premade status goes here
+status:
+  - "Welcome to sinar project,"
+  - "If you want to know about bills please visit http://billwatcher.sinarproject.org"
+  - "@sweemeng is testing the some automation script here"
+
+factoids:
+  - max
+  - min

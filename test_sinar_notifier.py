@@ -16,7 +16,7 @@ class SinarNotifierTests(unittest.TestCase):
                               consumer_secret='consumer_secret',
                               access_token_key='access_token_key',
                               access_token_secret='access_token_secret')
-        self.statuses = dict(status='Status', motd='I am the MOTD')
+        self.statuses = dict(status=['Status1', 'Status2'], motd='I am the MOTD')
 
         def load_config(filename):
             if "config.yaml" in filename:
@@ -87,7 +87,8 @@ class SinarNotifierTests(unittest.TestCase):
         self.fortune_notifier = FortuneNotifier()
         mock_open.return_value = "statuses.yaml"
         self.fortune_notifier.generate_message()
-        self.assertIn(self.fortune_notifier.message, 'Status')
+        self.assertIn(self.fortune_notifier.message,
+                      ['Status1', 'Status2'])
 
     @patch("__builtin__.open")
     @patch("twitter.Api.VerifyCredentials")
